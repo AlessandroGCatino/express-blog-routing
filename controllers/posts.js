@@ -42,7 +42,15 @@ const index = (req, res) => {
 }
 
 const show = (req, res) => {
-
+    let requestedPostSlug = req.params.slug;
+    let outputPost = allPosts.find(post => post.slug === requestedPostSlug);
+    res.format({
+        json: () => {
+            if (outputPost){
+                res.json({...outputPost})
+            }
+        }
+    })
 }
 
 const create = (req, res) => {
