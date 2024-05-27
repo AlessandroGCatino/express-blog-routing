@@ -54,6 +54,15 @@ const show = (req, res) => {
 }
 
 const create = (req, res) => {
+    res.format({
+        html: () => {
+            let html = `<h1> Creazione nuovo post </h1>`;
+            res.send(html);
+        },
+        default: () => {
+            res.status(406).send("Error. Not Acceptable.")
+        }
+    })
 
 }
 
